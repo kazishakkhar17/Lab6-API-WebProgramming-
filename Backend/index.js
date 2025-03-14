@@ -9,5 +9,5 @@ app.get('/', function (req, res) {
 app.listen(3000, ()=>{
     console.log("Server is running on port 3000");
 })
-
+//test comment
 mongoose.connect("mongodb+srv://kazishakkhar04:ZkoZBplIfAJvIo40@cluster0.khwct.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(() => console.log('Connected!'));
