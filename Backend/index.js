@@ -1,8 +1,16 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const User = require('./models/user');
 
 const app = express();
+
+// CORS setup
+app.use(cors({
+  origin: 'http://localhost:3001', // Replace with your frontend URL
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type'
+}));
 
 app.use(express.json());
 
@@ -86,10 +94,11 @@ app.delete('/api/users/:idStudent', async (req, res) => {
 mongoose.connect("mongodb+srv://kazishakkhar04:ZkoZBplIfAJvIo40@cluster0.khwct.mongodb.net/user?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => {
     console.log('Connected to MongoDB!');
-    app.listen(3000, () => {
-      console.log("Server is running on port 3000");
+    app.listen(5000,{maxHttpHeaderSize: 1e8} ,() => {
+      console.log("Server is running on port 5000");
     });
   })
   .catch((err) => {
     console.log('Error:', err);
   });
+
